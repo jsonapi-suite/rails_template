@@ -1,4 +1,5 @@
 Thor::Base.shell = Thor::Shell::Color
+require 'yaml'
 
 def truthy?(statement)
   val = ask(statement)
@@ -9,12 +10,20 @@ def eval_template(name)
   instance_eval(File.read(File.dirname(__FILE__) + "/#{name}.rb"))
 end
 
+def update_config!(attrs)
+  config = File.exists?('.jsonapicfg.yml') ? YAML.load_file('.jsonapicfg.yml') : {}
+  config.merge!(attrs)
+  File.open('.jsonapicfg.yml', 'w') { |f| f.write(config.to_yaml) }
+end
+
 def api_namespace
   @api_namespace ||= begin
-    prompt \
+    ns = prompt \
       header: "What is your API namespace?",
       description: "This will be used as a route prefix, e.g. if you want the route '/books_api/v1/authors' your namespace would be 'books_api'",
       default: 'api'
+    update_config!('namespace' => ns)
+    ns
   end
 end
 
@@ -206,5 +215,4 @@ insert_into_file "Rakefile", after: "require_relative 'config/application'\n" do
   "require 'jsonapi_swagger_helpers'\n"
 end
 
-end
-say(set_color("\nYou're all set! If you need help developing JSONAPI, please head to our documentation website: https://jsonapi-suite.github.io/jsonapi_suite\n", :green, :bold))
+say(set_color("\nYou're all set! If you need help developing JSONAPI, please head to our documentation website: https://jsonapi-suite.github.io/jsonapi_suite\n", :green, :bold))end
