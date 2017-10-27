@@ -57,7 +57,7 @@ gem 'kaminari', '~> 1.0'
 
 gem_group :development, :test do
   gem 'rspec-rails', '~> 3.5.2'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'factory_bot_rails', '~> 4.0'
   gem 'faker', '~> 1.7' # keep here for seeds.rb
   gem 'swagger-diff', '~> 1.1'
 end
@@ -124,7 +124,7 @@ insert_into_file "spec/rails_helper.rb", :after => "RSpec.configure do |config|\
 end
 
 insert_into_file "spec/rails_helper.rb", :after => "RSpec.configure do |config|\n" do
-  "  config.include FactoryGirl::Syntax::Methods\n"
+  "  config.include FactoryBot::Syntax::Methods\n"
 end
 
 gsub_file "spec/rails_helper.rb", 'config.fixture_path = "#{::Rails.root}/spec/fixtures"' do |match|

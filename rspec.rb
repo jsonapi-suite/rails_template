@@ -38,7 +38,7 @@ insert_into_file "spec/rails_helper.rb", :after => "RSpec.configure do |config|\
 end
 
 insert_into_file "spec/rails_helper.rb", :after => "RSpec.configure do |config|\n" do
-  "  config.include FactoryGirl::Syntax::Methods\n"
+  "  config.include FactoryBot::Syntax::Methods\n"
 end
 
 gsub_file "spec/rails_helper.rb", 'config.fixture_path = "#{::Rails.root}/spec/fixtures"' do |match|
