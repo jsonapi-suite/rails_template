@@ -50,7 +50,7 @@ say(set_color(welcome.rstrip, :cyan, :bold))
 api_namespace
 
 gem 'jsonapi_suite', '~> 0.6'
-gem 'jsonapi-rails', '~> 0.2.1'
+gem 'jsonapi-rails', '~> 0.3.0'
 gem 'jsonapi_swagger_helpers', '~> 0.6', require: false
 gem 'jsonapi_spec_helpers', '~> 0.4', require: false
 gem 'kaminari', '~> 1.0'
