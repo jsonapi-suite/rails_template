@@ -1,4 +1,4 @@
-gem 'jsonapi_suite', '~> 0.6'
+gem 'jsonapi_suite', '~> 0.7'
 gem 'jsonapi-rails', '~> 0.3.0'
 gem 'jsonapi_swagger_helpers', '~> 0.6', require: false
 gem 'jsonapi_spec_helpers', '~> 0.4', require: false
